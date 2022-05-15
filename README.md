@@ -11,6 +11,9 @@ Start the server once in order to generate required config files
 
 Now go to `plugins/LittleLink` and edit the `config.yml` based by your server needs
 
+- `role` represents the role id user is required to have in order to join
+- `guild` represents the discord server id the role is located in
+
 > If you don't know how to find a role and guild id you first need to enable discord developer mode. You can find a tutorial [here](https://www.howtogeek.com/714348/how-to-enable-or-disable-developer-mode-on-discord/)
 
 Restart the server and enjoy your new plugin
@@ -18,9 +21,9 @@ Restart the server and enjoy your new plugin
 ## Information
 
 This plugin requires a discord bot in your server in order to retrieve all data. Discord bot is hosted by me enabling the tiny footprint of the plugin.
-If you want to find out more about the bot please go to [samiCraft/SamiLink](https://github.com/samiCraft/SamiLink)
+If you want to find out more about the bot and its API please go to [SamiCraft/SamiLink](https://github.com/SamiCraft/SamiLink)
 
-Plugin does a simple HTTP GET request towards the API running inside the bot application. After processing the information it decides if it should let the player join or kick him with an info message.
+Plugin does a simple HTTP GET request towards the API running inside the bot application. After processing the information it decides if it should let the player join or kick it with an info message.
 
 > Looking for webhook integration as well? This plugin is just a core whitelisting system. It contains an api inside so other plugins can access the discord data. Webhook plugin coming soon!
 
