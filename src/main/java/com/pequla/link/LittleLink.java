@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -36,6 +37,10 @@ public final class LittleLink extends JavaPlugin implements Listener {
     public void handlePlayerLogin(PlayerLoginEvent event) {
         try {
             Player player = event.getPlayer();
+            if (getServer().getBannedPlayers().stream().anyMatch(p -> p.getUniqueId().equals(player.getUniqueId()))) {
+                return;
+            }
+
             String uuid = player.getUniqueId().toString();
             String guild = getConfig().getString("guild");
             String role = getConfig().getString("role");
@@ -46,5 +51,10 @@ public final class LittleLink extends JavaPlugin implements Listener {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER,
                     e.getClass().getSimpleName() + ": " + e.getMessage());
         }
+    }
+
+    @EventHandler
+    public void handlePlayerQuit(PlayerQuitEvent event) {
+        playerData.remove(event.getPlayer().getUniqueId());
     }
 }
