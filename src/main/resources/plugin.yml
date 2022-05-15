@@ -1,0 +1,8 @@
+name: LittleLink
+version: '${project.version}'
+main: com.pequla.link.LittleLink
+api-version: 1.18
+load: STARTUP
+authors: [ Pequla ]
+description: Allows for simple whitelisting on the minecraft server
+website: https://pequla.com
