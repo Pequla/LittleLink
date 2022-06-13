@@ -94,4 +94,12 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Pequla Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Pequla/LittleLink</url>
+        </repository>
+    </distributionManagement>
 </project>
