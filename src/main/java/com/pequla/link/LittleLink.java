@@ -46,14 +46,14 @@ public final class LittleLink extends JavaPlugin implements Listener {
             String role = getConfig().getString("role");
             DataModel data = DataService.getInstance().getLinkData(uuid, guild, role);
             playerData.put(player.getUniqueId(), data);
-            getLogger().info("Player " + player.getName() + " joined as " + data.getName());
+            getLogger().info("Player " + player.getName() + " authenticated as " + data.getName());
         } catch (Exception e) {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER,
                     e.getClass().getSimpleName() + ": " + e.getMessage());
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void handlePlayerQuit(PlayerQuitEvent event) {
         playerData.remove(event.getPlayer().getUniqueId());
     }
