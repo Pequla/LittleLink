@@ -34,4 +34,13 @@ After receiving the instance of the plugin just access the HashMap with all the 
 
 Data class is `com.pequla.link.model.DataModel`
 
+You can import the maven package from the GitHub maven repo
+```xml
+<dependency>
+  <groupId>com.pequla</groupId>
+  <artifactId>little-link</artifactId>
+  <version>1.3</version>
+</dependency>
+```
+
 > Before accessing the plugin instance don't forget to put LittleLink as your plugin dependency
