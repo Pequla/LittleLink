@@ -33,7 +33,7 @@ public final class LittleLink extends JavaPlugin implements Listener {
         playerData.clear();
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void handlePlayerLogin(PlayerLoginEvent event) {
         try {
             Player player = event.getPlayer();
@@ -53,7 +53,7 @@ public final class LittleLink extends JavaPlugin implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void handlePlayerQuit(PlayerQuitEvent event) {
         playerData.remove(event.getPlayer().getUniqueId());
     }
