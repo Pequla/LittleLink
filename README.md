@@ -46,6 +46,22 @@ After receiving the instance of the plugin just access the HashMap with all the 
 
 Data class is `com.pequla.link.model.DataModel`
 
+Example setup code:
+```java
+@Override
+public void onEnable(){
+    PluginManager manager = getServer().getPluginManager();
+    LittleLink plugin = (LittleLink) manager.getPlugin("LittleLink");
+        
+    if (plugin == null) {
+        getLogger().warning("Plugin LittleLink not found");
+        manager.disablePlugin(this);
+        return;
+    }
+        // The rest of onEnable logic...
+}
+```
+
 You can import the maven package from the [GitHub Maven Repository](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)
 ```xml
 <dependency>
