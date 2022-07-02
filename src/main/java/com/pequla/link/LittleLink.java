@@ -26,6 +26,7 @@ public final class LittleLink extends JavaPlugin implements Listener {
         saveDefaultConfig();
         PluginManager manager = getServer().getPluginManager();
         manager.registerEvents(this, this);
+        getCommand("lookup").setExecutor(new LookupCommand());
     }
 
     @Override

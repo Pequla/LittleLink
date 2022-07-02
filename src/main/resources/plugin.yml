@@ -6,3 +6,8 @@ load: STARTUP
 authors: [ Pequla ]
 description: Allows for simple whitelisting on the minecraft server
 website: https://pequla.com
+commands:
+  lookup:
+    description: Finds player's Discord account
+    usage: /lookup <mc-username>
+    permission: littlelink.command.lookup

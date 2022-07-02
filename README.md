@@ -1,11 +1,14 @@
 # LittleLink
+
 Tiny Spigot plugin that enables Discord based whitelisting on the server
 
 ## Setup
 
-Before you start using this plugin you **will need to invite SamiLink discord bot** to your server using [this link](https://discord.com/api/oauth2/authorize?client_id=770681237622095913&permissions=1099780082688&scope=bot)
+Before you start using this plugin you **will need to invite SuperLink discord bot** to your server
+using [this link](https://discord.com/api/oauth2/authorize?client_id=770681237622095913&permissions=8&scope=applications.commands%20bot)
 
-Now download the latest file from releases and put it into your plugins folder
+Now download the latest file from [releases](https://github.com/Pequla/LittleLink/releases/latest) and put it into your
+plugins folder
 
 Start the server once in order to generate required config files
 
@@ -23,12 +26,21 @@ role: 426156903555399680
 
 Restart the server and enjoy your new plugin
 
+### Lookup command
+
+Command allows you to quickly find a Discord user based of the Minecraft username. Works only for people who have linked
+accounts. The lookup is global meaning users don't need to be online or be part of your Discord server
+
+> In order for players to use this command they will need the permission `littlelink.command.lookup`
+
 ## How it works?
 
-This plugin requires a discord bot in your server in order to retrieve all data. Discord bot is hosted by me enabling the tiny footprint of the plugin.
-If you want to find out more about the bot and its API please go to [SamiCraft/SamiLink](https://github.com/SamiCraft/SamiLink)
+This plugin requires a discord bot in your server in order to retrieve all data. Discord bot is hosted by me enabling
+the tiny footprint of the plugin. If you want to find out more about the bot and its API please go
+to [Pequla/SuperLink](https://github.com/Pequla/SuperLink)
 
-Plugin does a simple HTTP GET request towards the API running inside the bot application. After processing the information it decides if it should let the player join or kick it with an info message.
+Plugin does a simple HTTP GET request towards the API running inside the bot application. After processing the
+information it decides if it should let the player join or kick it with an info message.
 
 > Looking for webhook integration as well? This plugin is just a core whitelisting system. It contains an api inside so other plugins can access the discord data. Webhook plugin available [here](https://github.com/Pequla/LittleHooks)
 
@@ -41,33 +53,37 @@ Plugin does a simple HTTP GET request towards the API running inside the bot app
 
 ## For developers
 
-Plugin contains a simple API. In order to consume it I suggest importing the plugin jar as a library.
-After receiving the instance of the plugin just access the HashMap with all the player data by `LittleLink#getPlayerData()`.
+Plugin contains a simple API. In order to consume it I suggest importing the plugin jar as a library. After receiving
+the instance of the plugin just access the HashMap with all the player data by `LittleLink#getPlayerData()`.
 
 Data class is `com.pequla.link.model.DataModel`
 
 Example setup code:
+
 ```java
 @Override
 public void onEnable(){
-    PluginManager manager = getServer().getPluginManager();
-    LittleLink plugin = (LittleLink) manager.getPlugin("LittleLink");
-        
-    if (plugin == null) {
+        PluginManager manager=getServer().getPluginManager();
+        LittleLink plugin=(LittleLink)manager.getPlugin("LittleLink");
+
+        if(plugin==null){
         getLogger().warning("Plugin LittleLink not found");
         manager.disablePlugin(this);
         return;
-    }
+        }
         // The rest of onEnable logic...
-}
+        }
 ```
 
-You can import the maven package from the [GitHub Maven Repository](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)
+You can import the maven package from
+the [GitHub Maven Repository](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)
+
 ```xml
+
 <dependency>
     <groupId>com.pequla</groupId>
     <artifactId>little-link</artifactId>
-    <version>1.4</version>
+    <version>1.5</version>
     <scope>provided</scope>
 </dependency>
 ```

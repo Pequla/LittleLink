@@ -1,6 +1,5 @@
 package com.pequla.link.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -44,22 +43,30 @@ public class DataService {
     }
 
     public DataModel getLinkData(String uuid, String guild, String role) throws IOException, InterruptedException {
+        String url = "https://link.samifying.com/api/user/" + guild + "/" + role + "/" + uuid;
+        return mapper.readValue(get(url), DataModel.class);
+    }
+
+    public DataModel getLookupData(String name) throws IOException, InterruptedException {
+        String json = get("https://link.samifying.com/api/lookup/" + name);
+        return mapper.readValue(json, DataModel.class);
+    }
+
+    private String get(String url) throws IOException, InterruptedException {
         HttpRequest req = HttpRequest.newBuilder()
-                .uri(URI.create("https://link.samifying.com/api/user/" + uuid+"?simple=1&guild="+guild+"&role="+role))
+                .uri(URI.create(url))
                 .header("Content-Type", "application/json")
                 .GET()
                 .build();
         HttpResponse<String> rsp = client.send(req, HttpResponse.BodyHandlers.ofString());
-        handleStatusCode(rsp);
-        return mapper.readValue(rsp.body(), DataModel.class);
-    }
 
-    private void handleStatusCode(HttpResponse<String> rsp) throws JsonProcessingException {
+        // Generating response based of status codes
         int code = rsp.statusCode();
-        if (code == 200 || code == 204) {
-            return;
+        if (code == 200) {
+            // Response is OK
+            return rsp.body();
         }
-        if (code == 403) {
+        if (code == 500) {
             throw new RuntimeException(mapper.readValue(rsp.body(), ErrorModel.class).getMessage());
         }
         throw new RuntimeException("Response code " + code);
