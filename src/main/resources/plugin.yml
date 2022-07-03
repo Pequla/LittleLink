@@ -5,7 +5,7 @@ api-version: 1.19
 load: STARTUP
 authors: [ Pequla ]
 description: Allows for simple whitelisting on the minecraft server
-website: https://pequla.com
+website: https://github.com/Pequla/LittleLink
 commands:
   lookup:
     description: Finds player's Discord account
