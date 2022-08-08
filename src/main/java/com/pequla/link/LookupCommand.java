@@ -23,7 +23,7 @@ public class LookupCommand implements CommandExecutor {
                     DataModel model = DataService.getInstance().getLookupData(args[0]);
                     sender.sendMessage("Following data was found:" + System.lineSeparator() +
                             "ID: " + ChatColor.AQUA + model.getId() + ChatColor.RESET + System.lineSeparator() +
-                            "Name: " + ChatColor.AQUA + model.getName() + ChatColor.RESET + System.lineSeparator());
+                            "Name: " + ChatColor.AQUA + model.getName());
                 } catch (RuntimeException e) {
                     sendError(sender, e.getMessage());
                 } catch (Exception e) {
