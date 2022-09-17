@@ -24,13 +24,18 @@ public final class LittleLink extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+
         PluginManager manager = getServer().getPluginManager();
+        getLogger().info("Registering event listener");
         manager.registerEvents(this, this);
+
+        getLogger().info("Registering lookup command");
         getCommand("lookup").setExecutor(new LookupCommand());
     }
 
     @Override
     public void onDisable() {
+        getLogger().info("Clearing player cache");
         playerData.clear();
     }
 
