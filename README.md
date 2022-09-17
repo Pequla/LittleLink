@@ -83,7 +83,7 @@ the [GitHub Maven Repository](https://docs.github.com/en/packages/working-with-a
 <dependency>
     <groupId>com.pequla</groupId>
     <artifactId>little-link</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
     <scope>provided</scope>
 </dependency>
 ```
