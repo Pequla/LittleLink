@@ -1,5 +1,6 @@
 package com.pequla.link;
 
+import com.pequla.link.command.LookupCommand;
 import com.pequla.link.model.DataModel;
 import com.pequla.link.service.DataService;
 import lombok.Getter;
@@ -49,8 +50,16 @@ public final class LittleLink extends JavaPlugin implements Listener {
 
             String uuid = player.getUniqueId().toString();
             String guild = getConfig().getString("guild");
-            String role = getConfig().getString("role");
-            DataModel data = DataService.getInstance().getLinkData(uuid, guild, role);
+
+            // Should role be used
+            DataModel data;
+            if (getConfig().getBoolean("role.use")) {
+                String role = getConfig().getString("role");
+                data = DataService.getInstance().getLinkData(uuid, guild, role);
+            } else {
+                data = DataService.getInstance().getLinkData(uuid, guild);
+            }
+
             playerData.put(player.getUniqueId(), data);
             getLogger().info("Player " + player.getName() + " authenticated as " + data.getName());
         } catch (Exception e) {

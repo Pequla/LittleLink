@@ -16,11 +16,14 @@ Now go to `plugins/LittleLink` and edit the `config.yml` based by your server ne
 
 ```yaml
 guild: 264801645370671114
-role: 426156903555399680
+role:
+  use: false
+  id: 426156903555399680
 ```
 
-- `role` represents the role id user is required to have in order to join
-- `guild` represents the discord server id the role is located in
+- `guild` represents the discord server id the role is located in or the server user is required to be member of
+- `role.use` enable role based authentication, default is false (plugin will check for guild only)
+- `role.id` represents the role id user is required to have in order to join
 
 > If you don't know how to find a role and guild id you first need to enable discord developer mode. You can find a tutorial [here](https://www.howtogeek.com/714348/how-to-enable-or-disable-developer-mode-on-discord/)
 
@@ -63,27 +66,30 @@ Example setup code:
 ```java
 @Override
 public void onEnable(){
-        PluginManager manager=getServer().getPluginManager();
-        LittleLink plugin=(LittleLink)manager.getPlugin("LittleLink");
+    PluginManager manager = getServer().getPluginManager();
+    LittleLink plugin = (LittleLink) manager.getPlugin("LittleLink");
 
-        if(plugin==null){
+    if (plugin == null) {
         getLogger().warning("Plugin LittleLink not found");
         manager.disablePlugin(this);
         return;
-        }
-        // The rest of onEnable logic...
-        }
+    }
+    // The rest of onEnable logic...
+}
 ```
 
-You can import the maven package from
-the [GitHub Maven Repository](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)
+You can import the maven package from my maven repository
 
 ```xml
+<repository>
+    <id>pequla-repo</id>
+    <url>https://maven.pequla.com/releases</url>
+</repository>
 
 <dependency>
     <groupId>com.pequla</groupId>
     <artifactId>little-link</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
     <scope>provided</scope>
 </dependency>
 ```

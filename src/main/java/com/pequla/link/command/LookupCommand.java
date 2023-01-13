@@ -1,4 +1,4 @@
-package com.pequla.link;
+package com.pequla.link.command;
 
 import com.pequla.link.model.DataModel;
 import com.pequla.link.service.DataService;

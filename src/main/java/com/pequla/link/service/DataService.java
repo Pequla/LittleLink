@@ -47,6 +47,11 @@ public class DataService {
         return mapper.readValue(get(url), DataModel.class);
     }
 
+    public DataModel getLinkData(String uuid, String guild) throws IOException, InterruptedException {
+        String url = "https://link.samifying.com/api/user/" + guild + "/" + uuid;
+        return mapper.readValue(get(url), DataModel.class);
+    }
+
     public DataModel getLookupData(String name) throws IOException, InterruptedException {
         String json = get("https://link.samifying.com/api/lookup/" + name);
         return mapper.readValue(json, DataModel.class);
