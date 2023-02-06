@@ -54,7 +54,7 @@ public final class LittleLink extends JavaPlugin implements Listener {
             // Should role be used
             DataModel data;
             if (getConfig().getBoolean("role.use")) {
-                String role = getConfig().getString("role");
+                String role = getConfig().getString("role.id");
                 data = DataService.getInstance().getLinkData(uuid, guild, role);
             } else {
                 data = DataService.getInstance().getLinkData(uuid, guild);
