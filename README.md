@@ -21,7 +21,7 @@ role:
   id: 426156903555399680
 ```
 
-- `guild` represents the discord server id the role is located in or the server user is required to be member of
+- `guild` represents the discord server id
 - `role.use` enable role based authentication, default is false (plugin will check for guild only)
 - `role.id` represents the role id user is required to have in order to join
 
