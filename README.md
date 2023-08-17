@@ -89,7 +89,7 @@ You can import the maven package from my maven repository
 <dependency>
     <groupId>com.pequla</groupId>
     <artifactId>little-link</artifactId>
-    <version>1.7</version>
+    <version>1.8</version>
     <scope>provided</scope>
 </dependency>
 ```
